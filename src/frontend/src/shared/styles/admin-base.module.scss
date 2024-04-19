@@ -1,0 +1,57 @@
+@import './base.module.scss';
+
+.baseLayout {
+  display: grid;
+  grid-template-columns: 250px auto;
+
+  height: 100dvh;
+  width: 100dvw;
+}
+
+.asideLayout {
+  @include flexCenterColumn();
+
+  width: 100%;
+  height: 100%;
+
+  padding: 30px;
+
+  background-color: var(--base-light-gray);
+}
+
+.asideLogotype {
+  @include font(18px, 600);
+  @include flex();
+  justify-items: flex-start;
+
+  height: fit-content;
+  width: 100%;
+
+}
+
+.linkContainer {
+  height: 100%;
+  width: 100%;
+
+  padding-top: 50px;
+}
+
+.adminLink {
+  @include flexCenter();
+  @include font(18px, 600);
+  text-decoration: none;
+
+  width: 100%;
+  padding: 18px 0;
+
+  border: 2px solid var(--base-black);
+  border-radius: 10px;
+
+  margin-bottom: 10px;
+
+  &.active {
+    border: 2px solid var(--base-green);
+    background-color: var(--base-green);
+    box-shadow: 0px 5px 10px var(--base-black);
+  }
+}
