@@ -2,7 +2,7 @@ version: '3.9'
 services:
 
   backend:
-    iamge: xoriax/web-company-backend:latest
+    image: xoriax/logistic-axenix-backend:latest
     container_name: backend
     restart: always
     labels:
@@ -37,7 +37,7 @@ services:
       - "4000:4000"
 
   frontend:
-    image: xoriax/web-company-frontend:latest
+    image: xoriax/logistic-axenix-frontend:latest
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
