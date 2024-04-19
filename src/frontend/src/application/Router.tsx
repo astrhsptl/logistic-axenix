@@ -1,7 +1,6 @@
-import { LogOut, NotFoundPage } from '@/pages';
+import { AdminEntrypoint, LogOut, NotFoundPage } from '@/pages';
 import { SignIn, SignUp } from '@/pages/';
 import { RedirectNotFound } from '@/pages/redirect-not-found-page';
-import { TestAdmin } from '@/pages/test-admin';
 import '@/shared/styles/base.css';
 import { Route, Routes } from 'react-router-dom';
 
@@ -23,7 +22,11 @@ export const AppRouter = () => {
       <Route key={'sign in'} element={<SignIn />} path='/sign-in' />
       <Route key={'sign up'} element={<SignUp />} path='/sign-up' />
 
-      <Route key={'test admin'} element={<TestAdmin />} path='/test-admin' />
+      <Route
+        key={'admin entrypoint'}
+        element={<AdminEntrypoint />}
+        path='/admin'
+      />
     </Routes>
   );
 };
