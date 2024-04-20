@@ -27,8 +27,7 @@ class ProductViewSet(ModelViewSet):
                     'id_sale_point', 'id_warehouse']
     filterset_fields = ['id', 'name', 'cost',
                     'volume', 'weight', 'expiration_date',
-                    'product_quantity', 'id_category', 'id_shipment',
-                    'id_sale_point', 'id_warehouse']
+                    'product_quantity']
 
 
 @extend_schema(tags=['Category'])
@@ -47,4 +46,4 @@ class DealViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'quantity', 'id_sape_point', 'id_product']
-    filterset_fields = ['id', 'quantity', 'id_sape_point', 'id_product']
+    filterset_fields = ['id', 'quantity']
