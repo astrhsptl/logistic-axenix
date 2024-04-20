@@ -23,8 +23,7 @@ class DriverViewSet(ModelViewSet):
     serializer_class = DriverModelSerializer
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = []
-    tags = []
+    search_fields = ['id', 'last_name', 'user_id']
 
 @extend_schema(tags=['Route'])
 class RouteViewSet(ModelViewSet):
@@ -32,8 +31,7 @@ class RouteViewSet(ModelViewSet):
     serializer_class = RouteModelSerializer
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = []
-    tags = []
+    search_fields = ['id', 'id_driver']
 
 @extend_schema(tags=['RouteOrder'])
 class RouteOrderViewSet(ModelViewSet):
@@ -41,8 +39,7 @@ class RouteOrderViewSet(ModelViewSet):
     serializer_class = RouteOrderModelSerializer
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = []
-    tags = []
+    search_fields = ['id', 'id_warehouse', 'id_salepoint', 'id_route']
 
 @extend_schema(tags=['Shipment'])
 class ShipmentViewSet(ModelViewSet):
@@ -50,6 +47,5 @@ class ShipmentViewSet(ModelViewSet):
     serializer_class = ShipmentModelSerializer
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = []
-    tags = []
+    search_fields = ['id', 'name']
 
