@@ -1,5 +1,6 @@
-export * from './Some';
+export * from './admin';
 export * from './logout';
 export * from './not-found';
+export * from './redirect-not-found-page';
 export * from './sign-in';
 export * from './sign-up';
