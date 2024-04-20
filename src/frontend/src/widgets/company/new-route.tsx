@@ -33,7 +33,10 @@ export const NewRouteMap: React.FC<NewRouteMapProps> = observer(() => {
     if (result === 'first') {
       toast.success('Выбран первый адрес');
       pointsChooseStatement.switchState();
+      return;
     }
+
+    toast.success('Адрес доставки добавлен');
   };
 
   return (
