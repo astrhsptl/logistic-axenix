@@ -46,6 +46,7 @@ class Driver(models.Model):
     last_name = models.CharField(max_length=128, blank=False, null=False, verbose_name='Фамилия')
     phone = models.IntegerField(null=False, blank=False, verbose_name='Телефон')
     experience = models.IntegerField(blank=False, default=0, null=False, verbose_name='Стаж')
+    volume = models.FloatField(blank=False, null=True, verbose_name='Объем')
     user_id = models.ForeignKey(to=User, null=True, on_delete=models.SET_NULL, blank=True, related_name='driver')
     
     def __str__(self) -> str:
