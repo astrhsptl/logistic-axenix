@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from uuid import uuid4
 
 from django.db import models
@@ -28,11 +29,12 @@ class Route(models.Model):
         default=uuid4,
         editable=False
     )
+    name = models.CharField(max_length=128, null=True, blank=True, verbose_name='Назавание')
     # provider_warehouse = models.BooleanField(blank=False, null=False, )
     id_driver = models.ForeignKey(to='Driver', null=True, on_delete=models.SET_NULL, related_name='route')
     
     def __str__(self) -> str:
-        return self.id
+        return self.name
 
 
 class Driver(models.Model):
@@ -62,8 +64,8 @@ class RouteOrder(models.Model):
     )
     order_position = models.IntegerField(blank=False, null=False, )
     complited = models.BooleanField(blank=False, null=False, default=False, verbose_name='Состояние')
-    id_warehouse = models.ForeignKey(to=Warehouse, null=True, on_delete=models.SET_NULL, related_name='route_order')
-    id_salepoint = models.ForeignKey(to=SalePoint, null=True, on_delete=models.SET_NULL, related_name='route_order')
+    id_warehouse = models.ForeignKey(to=Warehouse, blank=True, null=True, on_delete=models.SET_NULL, related_name='route_order')
+    id_salepoint = models.ForeignKey(to=SalePoint, blank=True, null=True, on_delete=models.SET_NULL, related_name='route_order')
     id_route = models.ForeignKey(to='Route', on_delete=models.PROTECT, related_name='route_order')
     
     def __str__(self) -> str:

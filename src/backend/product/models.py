@@ -23,8 +23,8 @@ class Product(models.Model):
     product_quantity = models.IntegerField(blank=False, null=False, verbose_name='Количество')
     id_category = models.ForeignKey(to='Category', related_name='product', on_delete=models.CASCADE)
     id_shipment = models.ForeignKey(to=Shipment, related_name='product', on_delete=models.CASCADE)
-    id_sale_point = models.ForeignKey(to=SalePoint, null=True, related_name='product', on_delete=models.SET_NULL)
-    id_warehouse = models.ForeignKey(to=Warehouse, null=True, related_name='product', on_delete=models.SET_NULL)
+    id_sale_point = models.ForeignKey(to=SalePoint, blank=True, null=True, related_name='product', on_delete=models.SET_NULL)
+    id_warehouse = models.ForeignKey(to=Warehouse, blank=True, null=True, related_name='product', on_delete=models.SET_NULL)
     
     
     def __str__(self) -> str:
