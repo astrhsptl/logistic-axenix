@@ -28,6 +28,9 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = observer(
           </div>
           {isAuthenticated ? (
             <>
+              <Link to='/admin' onClick={burgerStatement.switchState}>
+                Админ
+              </Link>
               <Link to='/logout' onClick={burgerStatement.switchState}>
                 Выход
               </Link>

@@ -4,6 +4,7 @@ export interface DriverCreate {
   first_name: string;
   last_name: string;
   phone: number;
+  volume: number;
   experience?: number;
   user_id?: number;
 }

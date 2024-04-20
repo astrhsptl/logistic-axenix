@@ -1,0 +1,113 @@
+@import './base.module.scss';
+
+.baseLayout {
+  @include font(16px, 500);
+
+  padding: 20px;
+  border-radius: 5px;
+
+  background-color: #F9F9FC;
+
+  display: grid;
+  grid-template-areas:
+  "A A A"
+  "B C C"
+  "B C C";
+
+  max-width: 400px;
+  width: 100%;
+}
+
+.driverTitle {
+  @include flex();
+  justify-content: space-between;
+  width: 100%;
+  grid-area: A;
+}
+
+.driverInfo  {
+  @include flexColumn();
+  justify-content: space-around;
+  grid-area: B;
+}
+
+.driverVolume  {
+  grid-area: C;
+}
+
+.truckImage {
+  max-width: 250px;
+}
+
+.truck {
+  position: relative;
+}
+
+.truckVolumeIndicator {
+  position: absolute;
+  height: 90px;
+  top: 48px;
+  left: 90px;
+}
+
+.driverContainer {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 30px;
+  justify-content: space-around;
+  max-height: 100%;
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.colorFullFilled {
+  background-color: #D75867;
+  color: #D75867;
+}
+
+.colorMiddleFilled {
+  background-color: #F0A846;
+  color: #F0A846;
+}
+
+.colorLightFilled {
+  background-color: #55CA7F;
+  color: #55CA7F;
+}
+
+
+.textColorFullFilled {
+  color: #D75867;
+}
+
+.textColorMiddleFilled {
+  color: #F0A846;
+}
+
+.textColorLightFilled {
+  color: #55CA7F;
+}
+
+@media (max-width: 410px) {
+  .baseLayout {
+    @include font(12px, 500);
+    max-width: 340px;
+    width: 95%;
+  }
+
+  .truckImage {
+    max-width: 200px;
+  }
+
+  .truckVolumeIndicator {
+    height: 67px;
+    top: 39px;
+    left: 73px;
+  }
+}

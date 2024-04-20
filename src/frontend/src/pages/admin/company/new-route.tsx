@@ -22,6 +22,9 @@ export const NewRoute: React.FC<NewRouteProps> = () => {
         defaultCenter={
           location ? [location?.latitude, location?.longitude] : undefined
         }
+        center={
+          location ? [location?.latitude, location?.longitude] : undefined
+        }
         defaultZoom={15}
       ></Map>
     </BaseAdminLayout>

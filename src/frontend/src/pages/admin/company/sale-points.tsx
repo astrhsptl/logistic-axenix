@@ -1,5 +1,6 @@
 import { BaseAdminLayout } from '@/features';
 import { BaseAdminStyles, CompanyLinks } from '@/shared';
+import { SalePointsMap } from '@/widgets';
 import React from 'react';
 
 interface SalePointsProps {}
@@ -14,7 +15,7 @@ export const SalePoints: React.FC<SalePointsProps> = () => {
       }}
       links={CompanyLinks}
     >
-      Торговые точки
+      <SalePointsMap />
     </BaseAdminLayout>
   );
 };

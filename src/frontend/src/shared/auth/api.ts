@@ -3,7 +3,7 @@ import { RefreshResponse, SERVER_URL, User } from '..';
 
 export const fetchUserByToken = async (access: string) => {
   return await axios
-    .get<User | null>(`${SERVER_URL}/auth/me/`, {
+    .get<User | null>(`${SERVER_URL}/auth/user/`, {
       headers: { Authorization: `Bearer ${access}` },
     })
     .catch(() => {
