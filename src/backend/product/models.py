@@ -15,12 +15,12 @@ class Product(models.Model):
         default=uuid4,
         editable=False
     )
-    name = models.CharField(max_length=50, db_index=True, blank=False, null=False, verbose_name='Название')
-    cost = models.FloatField(blank=False, null=False, verbose_name='Стоимость')
-    volume = models.FloatField(blank=False, null=False, verbose_name='Объем')
-    weight = models.FloatField(blank=False, null=False, verbose_name='Вес')
-    expiration_date = models.DateField(blank=False, null=False, verbose_name='Срок годности')
-    product_quantity = models.IntegerField(blank=False, null=False, verbose_name='Количество')
+    name = models.CharField(max_length=50, db_index=True, blank=False, null=True, verbose_name='Название')
+    cost = models.FloatField(blank=False, null=True, verbose_name='Стоимость')
+    volume = models.FloatField(blank=False, null=True, verbose_name='Объем')
+    weight = models.FloatField(blank=False, null=True, verbose_name='Вес')
+    expiration_date = models.DateField(blank=False, null=True, verbose_name='Срок годности')
+    product_quantity = models.IntegerField(blank=False, null=True, verbose_name='Количество')
     id_category = models.ForeignKey(to='Category', related_name='product', on_delete=models.CASCADE)
     id_shipment = models.ForeignKey(to=Shipment, related_name='product', on_delete=models.CASCADE)
     id_sale_point = models.ForeignKey(to=SalePoint, blank=True, null=True, related_name='product', on_delete=models.SET_NULL)

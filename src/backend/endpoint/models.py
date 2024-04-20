@@ -9,12 +9,12 @@ class Warehouse(models.Model):
         default=uuid4,
         editable=False
     )
-    name = models.CharField(max_length=128, blank=False, null=False, verbose_name='Название')
-    address = models.CharField(max_length=256, blank=False, null=False, db_index=True, verbose_name='Адрес')
-    volume = models.FloatField(blank=False, null=False, verbose_name='Объем')
-    is_provider = models.BooleanField(blank=False, null=False, default=0, verbose_name='Поставщик')
-    lon = models.FloatField(blank=False, null=False, verbose_name='Долгота')
-    lat = models.FloatField(blank=False, null=False, verbose_name='Широта')
+    name = models.CharField(max_length=128, blank=False, null=True, verbose_name='Название')
+    address = models.CharField(max_length=256, blank=False, null=True, db_index=True, verbose_name='Адрес')
+    volume = models.FloatField(blank=False, null=True, verbose_name='Объем')
+    is_provider = models.BooleanField(blank=False, null=True, default=0, verbose_name='Поставщик')
+    lon = models.FloatField(blank=False, null=True, verbose_name='Долгота')
+    lat = models.FloatField(blank=False, null=True, verbose_name='Широта')
     
     def __str__(self) -> str:
         return self.address
@@ -27,11 +27,11 @@ class SalePoint(models.Model):
         default=uuid4,
         editable=False
     )
-    name = models.CharField(max_length=128, blank=False, null=False, verbose_name='Название')
-    address = models.CharField(max_length=256, blank=False, null=False, db_index=True, verbose_name='Адрес')
-    volume = models.FloatField(blank=False, null=False, verbose_name='Объем')
-    lon = models.FloatField(blank=False, null=False, verbose_name='Долгота')
-    lat = models.FloatField(blank=False, null=False, verbose_name='Широта')
+    name = models.CharField(max_length=128, blank=False, null=True, verbose_name='Название')
+    address = models.CharField(max_length=256, blank=False, null=True, db_index=True, verbose_name='Адрес')
+    volume = models.FloatField(blank=False, null=True, verbose_name='Объем')
+    lon = models.FloatField(blank=False, null=True, verbose_name='Долгота')
+    lat = models.FloatField(blank=False, null=True, verbose_name='Широта')
     
     def __str__(self) -> str:
         return self.address
