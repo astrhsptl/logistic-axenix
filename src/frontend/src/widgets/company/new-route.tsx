@@ -3,25 +3,38 @@ import {
   WareHouse,
   salePointAPI,
   useGeoLocation,
+  useStoreHook,
   warehouseAPI,
 } from '@/shared';
 import { SalePoint } from '@/shared/interfaces/sale-point';
 import { useQuery } from '@tanstack/react-query';
+import { observer } from 'mobx-react-lite';
 import { Map, Overlay } from 'pigeon-maps';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 interface NewRouteMapProps {}
 
-export const NewRouteMap: React.FC<NewRouteMapProps> = () => {
+export const NewRouteMap: React.FC<NewRouteMapProps> = observer(() => {
+  const { pointsStatement, pointsChooseStatement } = useStoreHook();
   const location = useGeoLocation();
   const salePointsQuery = useQuery({
     queryKey: ['salepoint'],
     queryFn: async () => await salePointAPI.fetchAll<SalePoint>(),
   });
-  const wirehousesQuery = useQuery({
+  const warehousesQuery = useQuery({
     queryKey: ['warehouse'],
     queryFn: async () => await warehouseAPI.fetchAll<WareHouse>(),
   });
+
+  const addToStatement = (point: SalePoint | WareHouse) => {
+    const result = pointsStatement.addPoint(point);
+
+    if (result === 'first') {
+      toast.success('Выбран первый адрес');
+      pointsChooseStatement.switchState();
+    }
+  };
 
   return (
     <Map
@@ -38,23 +51,23 @@ export const NewRouteMap: React.FC<NewRouteMapProps> = () => {
             src='/salepoint-map.png'
             alt='salepoint'
             onClick={() => {
-              console.log('asd');
+              addToStatement(sp);
             }}
           />
         </Overlay>
       ))}
-      {wirehousesQuery.data?.map((wh) => (
+      {warehousesQuery.data?.map((wh) => (
         <Overlay key={wh.id} anchor={[wh.lon, wh.lat]}>
           <img
             className={DefaultStyle.mapPin}
             src='/warehouse.png'
             alt='warehouse'
             onClick={() => {
-              console.log('asd');
+              addToStatement(wh);
             }}
           />
         </Overlay>
       ))}
     </Map>
   );
-};
+});

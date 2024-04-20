@@ -1,0 +1,140 @@
+@import './base.module.scss';
+
+$transition-config: all 0.2s ease-in-out;
+
+.baseLayout {
+  @include font(16px, 600);
+
+  display: grid;
+  grid-template-columns: 20px 250px;
+
+  position: fixed;
+
+  right: -260px;
+  top: calc(25%);
+
+  width: 290px;
+  height: 50%;
+  padding: 10px;
+
+  background-color: #fff;
+
+  border-radius: 10px 0px 0px 10px;
+
+  transition: $transition-config;
+
+  &.active {
+    right: 0px;
+  }
+}
+
+.modalSwitcherLayout {
+  @include flexCenter();
+
+  padding-right: 10px;
+  transition: $transition-config;
+
+  &.active > img {
+    transform: rotate(180deg);
+  }
+}
+
+.asideLayout {
+  display: grid;
+  position: relative;
+  gap: 10px;
+  grid-template-rows: 20px calc(50dvh - 100px) 40px;
+  height: 100%;
+  max-height: 100%;
+}
+
+.pointContainer {
+  @include flexColumn();
+  gap: 7px;
+
+  height: 100%;
+  position: relative;
+
+  max-height: 100%;
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pointItem {
+  @include font(14px, 400);
+
+  user-select: none;
+  cursor: pointer;
+
+  // margin-bottom: 20px;
+
+  &::marker {
+    color: red;
+    font-size: 1.5em;
+  }
+
+  & > img {
+    width: 14px;
+    height: 14px;
+    transition: $transition-config;
+  }
+
+  &.active > img {
+    transform: rotate(90deg);
+  }
+}
+
+.moreDetailed {
+  display: none;
+  margin-top: -50px;
+
+  &.active {
+    display: block;
+    animation-name: slidein;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+    margin-top: 0px;
+  }
+}
+
+.deleteButton {
+  @include font(14px, 400);
+
+  background-color: #FFF;
+  border: 1px solid #D75867;
+  color: #D75867;
+  padding: 5px;
+  margin-top: 0px;
+}
+
+
+.createButton {
+  @include font(14px, 400);
+
+  background-color: #FFF;
+  border: 1px solid #55CA7F;
+  color: #55CA7F;
+
+  padding: 5px;
+  margin-top: 0px;
+}
+
+.title {
+  text-align: center;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: -50px;
+  }
+
+  to {
+    margin-top: 0px;
+  }
+}
