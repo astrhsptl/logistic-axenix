@@ -3,7 +3,7 @@ from django.db import models
 from uuid import uuid4
 from django.db import models
 
-from backend.endpoint.models import SalePoint, Warehouse
+from endpoint.models import SalePoint, Warehouse
 
 
 class Notification(models.Model):
