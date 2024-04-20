@@ -1,19 +1,10 @@
 import { BaseAdminLayout, DriverCard } from '@/features';
-import { BaseAdminStyles, CompanyLinks, Driver, DriverStyles } from '@/shared';
-import { driverAPI } from '@/shared/api';
-import { useQuery } from '@tanstack/react-query';
+import { BaseAdminStyles, CompanyLinks, DriverStyles } from '@/shared';
 import React from 'react';
 
 interface DriversProps {}
 
 export const Drivers: React.FC<DriversProps> = () => {
-  const { data } = useQuery({
-    queryKey: ['drivers'],
-    queryFn: () => driverAPI.fetchAll<Driver>(),
-  });
-
-  console.log('data', data);
-
   return (
     <BaseAdminLayout
       className={BaseAdminStyles.adminEntrypoint}

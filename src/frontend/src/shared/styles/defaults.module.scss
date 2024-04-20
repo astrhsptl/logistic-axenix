@@ -119,6 +119,12 @@
     }
 }
 
+.mapPin {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);

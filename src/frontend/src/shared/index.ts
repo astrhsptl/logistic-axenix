@@ -1,3 +1,4 @@
+export * from './api';
 export * from './auth';
 export * from './base-interfaces';
 export * from './config';
@@ -9,5 +10,3 @@ export * from './modal';
 export * from './storage';
 export * from './styles';
 export * from './ui-kit';
-
-export const SERVER_URL = 'https://api.labofdev.ru/api/v1';

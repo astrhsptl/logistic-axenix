@@ -46,7 +46,9 @@ export const AsideLayout: React.FC<AsideLayoutProps> = observer(
               to={link}
               className={clsx(
                 BaseAdminStyles.adminLink,
-                link === pathname ? BaseAdminStyles.active : '',
+                link === pathname || `${link}/` === pathname
+                  ? BaseAdminStyles.active
+                  : '',
               )}
             >
               {name}

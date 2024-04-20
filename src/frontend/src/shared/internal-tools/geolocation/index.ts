@@ -16,7 +16,7 @@ export const useGeoLocation = () => {
         });
       },
     );
-  }, []);
+  }, [location]);
 
   return location;
 };

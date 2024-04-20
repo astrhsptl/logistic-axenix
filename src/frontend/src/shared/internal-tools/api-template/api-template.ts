@@ -1,21 +1,29 @@
-import { QueryParam, SERVER_URL } from '@/shared';
+import { QueryParam } from '@/shared';
 import { EntityId } from '@/shared/base-interfaces';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { compileUrlPath } from './api-tools';
 
 export class APITemplate {
   private url;
 
   constructor(url: string) {
-    this.url = `${SERVER_URL}/${url}/`;
+    this.url = `https://api.labofdev.ru/api/v1/${url}/`;
   }
 
   async fetchAll<FetchType>(
     queryParams?: QueryParam,
     RequestConfig?: AxiosRequestConfig,
-  ) {
+  ): Promise<FetchType[] | null> {
     const url = compileUrlPath(this.url, queryParams);
-    return await axios.get<FetchType[]>(url, RequestConfig);
+    const data: AxiosResponse<FetchType[]> | null = await axios
+      .get(url, RequestConfig)
+      .catch(() => null);
+
+    if (!data) {
+      return null;
+    }
+
+    return data.data;
   }
 
   async fetchByID<FetchType>(id: EntityId, RequestConfig?: AxiosRequestConfig) {
