@@ -24,6 +24,7 @@ class DriverViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'last_name', 'user_id']
+    filterset_fields = ['id', 'last_name', 'user_id']
 
 @extend_schema(tags=['Route'])
 class RouteViewSet(ModelViewSet):
@@ -32,6 +33,7 @@ class RouteViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'id_driver']
+    filterset_fields = ['id', 'id_driver']
 
 @extend_schema(tags=['RouteOrder'])
 class RouteOrderViewSet(ModelViewSet):
@@ -40,6 +42,7 @@ class RouteOrderViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'id_warehouse', 'id_salepoint', 'id_route']
+    filterset_fields = ['id', 'id_warehouse', 'id_salepoint', 'id_route']
 
 @extend_schema(tags=['Shipment'])
 class ShipmentViewSet(ModelViewSet):
@@ -48,4 +51,5 @@ class ShipmentViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'name']
+    filterset_fields = ['id', 'name']
 

@@ -21,6 +21,7 @@ class WarehouseViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'name', 'address', 'volume']
+    filterset_fields = ['id', 'name', 'address', 'volume']
 
 
 @extend_schema(tags=['SalePoint'])
@@ -30,5 +31,5 @@ class SalePointViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'name', 'address', 'volume']
-
+    filterset_fields = ['id', 'name', 'address', 'volume']
 
