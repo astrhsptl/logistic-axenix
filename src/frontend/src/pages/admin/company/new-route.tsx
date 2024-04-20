@@ -1,4 +1,4 @@
-import { BaseAdminLayout } from '@/features';
+import { AdminDeliverPoints, BaseAdminLayout } from '@/features';
 import { BaseAdminStyles, CompanyLinks } from '@/shared';
 import { NewRouteMap } from '@/widgets';
 import React from 'react';
@@ -16,6 +16,7 @@ export const NewRoute: React.FC<NewRouteProps> = () => {
       links={CompanyLinks}
     >
       <NewRouteMap />
+      <AdminDeliverPoints />
     </BaseAdminLayout>
   );
 };
