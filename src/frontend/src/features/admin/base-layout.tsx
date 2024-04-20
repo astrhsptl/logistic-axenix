@@ -14,19 +14,26 @@ interface BaseAdminLayoutProps {
 
 export const BaseAdminLayout: React.FC<BaseAdminLayoutProps> = observer(
   ({ className, backlink, children, links }) => {
-    const {
-      adminModalStatement: { isActive },
-    } = useStoreHook();
+    const { adminModalStatement } = useStoreHook();
 
     return (
       <div
         className={clsx(
           BaseAdminStyles.baseLayout,
-          isActive ? BaseAdminStyles.active : '',
+          adminModalStatement.isActive ? BaseAdminStyles.active : '',
         )}
       >
         <AsideLayout links={links} backLink={backlink} />
         <section className={clsx(className)}>{children}</section>
+        <div
+          className={clsx(
+            BaseAdminStyles.supportModalSwitcher,
+            adminModalStatement.isActive ? BaseAdminStyles.active : '',
+          )}
+          onClick={adminModalStatement.switchState}
+        >
+          <img src='/admin-side-arrow.svg' alt='' />
+        </div>
       </div>
     );
   },
