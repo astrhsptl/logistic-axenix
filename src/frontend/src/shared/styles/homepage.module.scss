@@ -1,0 +1,43 @@
+@import './base.module.scss';
+
+.wrapper {
+  display: flex;
+  height: 100dvh;
+  width: 100dvw;
+  justify-content: center;
+  align-items: center;
+}
+
+.but {
+  display: flex;
+  float: left;
+  width: 40%;
+  flex-direction: column;
+  gap: 40px;
+}
+
+h2 {
+  margin: 0;
+  font-weight: bold;
+  font-family: inter;
+  font-size: 40px;
+}
+
+p {
+  font-family: inter;
+  margin: 0;
+  max-width: 550px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+button {
+  background-color: black;
+  color: white;
+  width: 195px;
+  height: 60px;
+}
+
+.logo {
+  float: right;
+}

@@ -3,5 +3,6 @@ import BaseStyle from './base.module.scss';
 import DefaultStyle from './defaults.module.scss';
 import HeaderStyles from './header.module.scss';
 import NotFoundStyles from './not-found.module.scss';
+import Homepage from './homepage.module.scss'
 
 export { AuthStyles, BaseStyle, DefaultStyle, HeaderStyles, NotFoundStyles };
