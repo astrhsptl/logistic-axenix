@@ -27,7 +27,7 @@ admin.site.register(Driver, DriverAdmin)
 
 class RouteAdmin(admin.ModelAdmin):
     fields = (
-        "id", 'id_driver'
+        "id", 'name', 'id_driver'
     )
     list_display = (
         "id",
