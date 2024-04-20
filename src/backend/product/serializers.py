@@ -10,17 +10,16 @@ from .models import (
 class ProductModelSerializer(ModelSerializer):
     class Meta:
         model = Product
-        fields = ("__all__", )
+        fields = "__all__"
 
 
 class CategoryModelSerializer(ModelSerializer):
     class Meta:
         model = Category
-        fields = ("__all__", )
+        fields = "__all__"
 
 
 class DealModelSerializer(ModelSerializer):
     class Meta:
         model = Deal
-        fields = ("__all__", )
-
+        fields = "__all__"
