@@ -4,7 +4,7 @@ asgiref
 attrs
 cffi
 cryptography
-Django
+Django==5.0.2
 django-cors-headers
 django-filter
 djangorestframework
