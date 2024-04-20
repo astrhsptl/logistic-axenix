@@ -1,5 +1,3 @@
-coreapi
-coreschema
 asgiref
 attrs
 cffi
