@@ -21,7 +21,14 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductModelSerializer
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = ['id', 'name', 'cost', 'volume', 'weight', 'expiration_date', 'product_quantity', 'id_category', 'id_shipment', 'id_sale_point', 'id_warehouse']
+    search_fields = ['id', 'name', 'cost',
+                    'volume', 'weight', 'expiration_date',
+                    'product_quantity', 'id_category', 'id_shipment',
+                    'id_sale_point', 'id_warehouse']
+    filterset_fields = ['id', 'name', 'cost',
+                    'volume', 'weight', 'expiration_date',
+                    'product_quantity', 'id_category', 'id_shipment',
+                    'id_sale_point', 'id_warehouse']
 
 
 @extend_schema(tags=['Category'])
@@ -31,7 +38,7 @@ class CategoryViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'name']
-
+    filterset_fields = ['id', 'name']
 
 @extend_schema(tags=['Deal'])
 class DealViewSet(ModelViewSet):
@@ -40,3 +47,4 @@ class DealViewSet(ModelViewSet):
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'quantity', 'id_sape_point', 'id_product']
+    filterset_fields = ['id', 'quantity', 'id_sape_point', 'id_product']
