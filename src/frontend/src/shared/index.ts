@@ -1,5 +1,6 @@
 export * from './auth';
 export * from './base-interfaces';
+export * from './config';
 export * from './form';
 export * from './interfaces';
 export * from './internal-tools';

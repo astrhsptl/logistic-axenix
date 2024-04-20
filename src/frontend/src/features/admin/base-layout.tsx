@@ -7,17 +7,19 @@ import { AsideLayoutLink } from './interfaces';
 interface BaseAdminLayoutProps {
   children: ReactNode;
   links: AsideLayoutLink[];
+  backlink: AsideLayoutLink;
   className?: ClassValue;
 }
 
 export const BaseAdminLayout: React.FC<BaseAdminLayoutProps> = ({
   className,
+  backlink,
   children,
   links,
 }) => {
   return (
     <div className={BaseAdminStyles.baseLayout}>
-      <AsideLayout links={links} />
+      <AsideLayout links={links} backLink={backlink} />
       <section className={clsx(className)}>{children}</section>
     </div>
   );

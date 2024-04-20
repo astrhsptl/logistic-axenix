@@ -36,6 +36,17 @@
   padding-top: 50px;
 }
 
+.backLink {
+  @include font(14px, 600);
+  text-decoration: none;
+
+  @include flexCenter();
+  justify-content: flex-start;
+
+  width: 100%;
+}
+
+
 .adminLink {
   @include flexCenter();
   @include font(18px, 600);
@@ -47,7 +58,7 @@
   border: 2px solid var(--base-black);
   border-radius: 10px;
 
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
   &.active {
     border: 2px solid var(--base-green);

@@ -1,6 +1,16 @@
-import { AdminEntrypoint, LogOut, NotFoundPage } from '@/pages';
-import { SignIn, SignUp } from '@/pages/';
-import { RedirectNotFound } from '@/pages/redirect-not-found-page';
+import {
+  AdminCompany,
+  AdminEntrypoint,
+  Drivers,
+  LogOut,
+  NewRoute,
+  NotFoundPage,
+  RedirectNotFound,
+  SalePoints,
+  SignIn,
+  SignUp,
+} from '@/pages';
+import { WareHouses } from '@/pages/admin/company/warehouses';
 import '@/shared/styles/base.css';
 import { Route, Routes } from 'react-router-dom';
 
@@ -26,6 +36,32 @@ export const AppRouter = () => {
         key={'admin entrypoint'}
         element={<AdminEntrypoint />}
         path='/admin'
+      />
+      <Route
+        key={'admin company'}
+        element={<AdminCompany />}
+        path='/admin/company'
+      />
+
+      <Route
+        key={'admin route'}
+        element={<NewRoute />}
+        path='/admin/company/route'
+      />
+      <Route
+        key={'admin drivers'}
+        element={<Drivers />}
+        path='/admin/company/drivers'
+      />
+      <Route
+        key={'admin warehouses'}
+        element={<WareHouses />}
+        path='/admin/company/warehouses'
+      />
+      <Route
+        key={'admin sale-point'}
+        element={<SalePoints />}
+        path='/admin/company/sale-point'
       />
     </Routes>
   );
