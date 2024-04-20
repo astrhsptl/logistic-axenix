@@ -7,8 +7,9 @@ from django.dispatch import receiver
 
 # @receiver(post_save, sender=Warehouse)
 # async def warehouse_update(sender, **kwargs):
-#     # need_food = Warehouse.objects.select_related('product').filter(id_warehouse!=None, )
-#     pass
+#     need_food = Warehouse.objects.select_related('product').filter(id_warehouse=id).aggregate()
+#     # need_food2 = 
+
 # @receiver(post_save, sender=SalePoint)
 # async def sale_point_update(sender, **kwargs):
 #     pass
