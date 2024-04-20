@@ -1,44 +1,93 @@
 @import './base.module.scss';
 
+$transition-config: all 0.2s ease-in-out;
+
 .baseLayout {
   display: grid;
-  grid-template-columns: 250px auto;
 
+  grid-template-columns: 55px auto;
   height: 100dvh;
   width: 100dvw;
+  max-width: 100dvw;
+
+  transition: $transition-config;
+
+  &.active {
+    grid-template-columns: 250px auto;
+  
+  }
 }
 
 .asideLayout {
-  @include flexCenterColumn();
+  display: grid;
+  grid-template-rows: 110px auto 40px;
+
+  margin-left: -195px;
 
   width: 100%;
+  min-width: 250px;
   height: 100%;
-
-  padding: 30px;
+  max-height: 100dvh;
 
   background-color: var(--base-light-gray);
+  transition: $transition-config;
+
+  &.active {
+    margin-left: 0px;
+  }
+}
+
+.asideLogoBar {
+  @include font(18px, 600);
+  @include flex();
+
+  padding: 30px 15px;
+
+  justify-content: space-between;
+
+  height: fit-content;
+  width: 100%;
 }
 
 .asideLogotype {
   @include font(18px, 600);
   @include flex();
-  justify-items: flex-start;
-
   height: fit-content;
   width: 100%;
+}
 
+.asideModalSwitcher {
+  padding: 10px 14px;
+  background-color: var(--base-middle-gray);
+  border-radius: 10px;
+  text-align: center;
+  transition: $transition-config;
+  cursor: pointer;
+
+  &.active {
+    transform: rotate(180deg);
+  }
 }
 
 .linkContainer {
   height: 100%;
   width: 100%;
 
-  padding-top: 50px;
+  padding: 50px 30px 0px 30px;
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .backLink {
   @include font(14px, 600);
   text-decoration: none;
+
+  padding-left: 30px;
 
   @include flexCenter();
   justify-content: flex-start;
