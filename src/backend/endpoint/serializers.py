@@ -9,10 +9,10 @@ from .models import (
 class WarehouseModelSerializer(ModelSerializer):
     class Meta:
         model = Warehouse
-        fields = ("__all__", )
+        fields = "__all__"
 
 
 class SalePointSerializer(ModelSerializer):
     class Meta:
         model = SalePoint
-        fields = ("__all__", )
+        fields = "__all__"
