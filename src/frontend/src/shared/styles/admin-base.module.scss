@@ -33,6 +33,8 @@ $transition-config: all 0.2s ease-in-out;
   background-color: var(--base-light-gray);
   transition: $transition-config;
 
+  z-index: $modal-index;
+
   &.active {
     margin-left: 0px;
   }
@@ -121,6 +123,7 @@ $transition-config: all 0.2s ease-in-out;
 .adminEntrypoint {
   @include flexCenter();
   @include font(30px, 600);
+  max-height: 100dvh;
 }
 
 .supportModalSwitcher {

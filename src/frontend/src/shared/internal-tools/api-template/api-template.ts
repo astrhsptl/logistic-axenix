@@ -15,7 +15,7 @@ export class APITemplate {
     RequestConfig?: AxiosRequestConfig,
   ) {
     const url = compileUrlPath(this.url, queryParams);
-    return await axios.get<FetchType>(url, RequestConfig);
+    return await axios.get<FetchType[]>(url, RequestConfig);
   }
 
   async fetchByID<FetchType>(id: EntityId, RequestConfig?: AxiosRequestConfig) {

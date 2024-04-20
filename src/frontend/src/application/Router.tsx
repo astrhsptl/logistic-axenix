@@ -2,6 +2,7 @@ import {
   AdminCompany,
   AdminEntrypoint,
   Drivers,
+  Homepage,
   LogOut,
   NewRoute,
   NotFoundPage,
@@ -17,6 +18,7 @@ import { Route, Routes } from 'react-router-dom';
 export const AppRouter = () => {
   return (
     <Routes>
+      <Route key={'homepage'} element={<Homepage />} path='/' />
       <Route
         key={'not found page'}
         element={<NotFoundPage />}

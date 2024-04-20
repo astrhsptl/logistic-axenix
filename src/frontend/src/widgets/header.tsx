@@ -1,7 +1,7 @@
 import { BurgerMenu } from '@/features';
 import { HeaderStyles, useAuthentication, useStoreHook } from '@/shared';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {}
 
@@ -9,12 +9,11 @@ const HeaderFc: React.FC<HeaderProps> = () => {
   const {
     burgerStatement: { switchState },
   } = useStoreHook();
-  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     useAuthentication().then((response) => {
-      if (!response) return navigate('/sign-in');
+      if (!response) return setIsAuthenticated(false);
       setIsAuthenticated(true);
       return;
     });
@@ -29,6 +28,7 @@ const HeaderFc: React.FC<HeaderProps> = () => {
       <article className={HeaderStyles.linkContainer}>
         {isAuthenticated ? (
           <>
+            <Link to='/admin'>Админ</Link>
             <Link to='/logout'>Выход</Link>
           </>
         ) : (
