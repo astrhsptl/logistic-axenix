@@ -1,3 +1,4 @@
+from turtle import distance
 from uuid import uuid4
 
 from django.db import models
@@ -35,3 +36,18 @@ class SalePoint(models.Model):
     
     def __str__(self) -> str:
         return self.address
+
+
+class Associat(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        db_index=True,
+        default=uuid4,
+        editable=False
+    )
+    id_warehouse_from = models.ForeignKey(to=Warehouse, blank=True, null=True, related_name='associat_rout', on_delete=models.SET_NULL)
+    id_warehouse_to = models.ForeignKey(to=Warehouse, blank=True, null=True, on_delete=models.SET_NULL)
+    id_sale_point_from = models.ForeignKey(to=SalePoint, blank=True, null=True, related_name='associat_rout', on_delete=models.SET_NULL)
+    id_sale_point_to = models.ForeignKey(to=SalePoint, blank=True, null=True, on_delete=models.SET_NULL)
+    distance = models.IntegerField(blank=False, null=False, verbose_name='Дистанция')
+    duration = models.IntegerField(blank=False, null=False, verbose_name='Время в секундах')

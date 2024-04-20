@@ -7,10 +7,12 @@ from drf_spectacular.utils import extend_schema
 from .models import (
     SalePoint,
     Warehouse,
+    Associat,
 )
 from .serializers import (
     SalePointSerializer,
     WarehouseModelSerializer,
+    AssociatModelSerializer,
 )
 
 
@@ -32,4 +34,18 @@ class SalePointViewSet(ModelViewSet):
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['id', 'name', 'address', 'volume']
     filterset_fields = ['id', 'name', 'address', 'volume']
+
+@extend_schema(tags=['Associat'])
+class AssociatViewSet(ModelViewSet):
+    queryset = Associat.objects.all()
+    serializer_class = AssociatModelSerializer
+    filter_backends = [SearchFilter, DjangoFilterBackend]
+    search_fields = ['id',
+                    'id_warehouse_from', 
+                    'id_warehouse_to', 
+                    'id_sale_point_from', 
+                    'id_sale_point_to', 
+                    'distance', 
+                    'duration',]
+    filterset_fields = ['id', 'distance', 'duration']
 
