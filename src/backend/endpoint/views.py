@@ -20,8 +20,7 @@ class WarehouseViewSet(ModelViewSet):
     serializer_class = WarehouseModelSerializer
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = []
-    tags = []
+    search_fields = ['id', 'name', 'address', 'volume']
 
 
 @extend_schema(tags=['SalePoint'])
@@ -30,7 +29,6 @@ class SalePointViewSet(ModelViewSet):
     serializer_class = SalePointSerializer
     pagination_class = None
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = []
-    tags = []
+    search_fields = ['id', 'name', 'address', 'volume']
 
 
