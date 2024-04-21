@@ -16,16 +16,20 @@ class WarehouseModelSerializer(ModelSerializer):
 class SalePointSerializer(ModelSerializer):
     class Meta:
         model = SalePoint
-        fields = "__all__"
-
-from .models import Associat
+        fields = "__all__" 
 
 
 class AssociatModelSerializer(ModelSerializer):
-    id_warehouse_from = WarehouseModelSerializer(many=True)
-    id_warehouse_to = WarehouseModelSerializer(many=True)
-    id_sale_point_from = SalePointSerializer(many=True)
-    id_sale_point_to = SalePointSerializer(many=True)
+    warehouse_from = WarehouseModelSerializer(read_only=True)
+    warehouse_to = WarehouseModelSerializer(read_only=True)
+    sale_point_from = SalePointSerializer(read_only=True)
+    sale_point_to = SalePointSerializer(read_only=True)
     class Meta:
         model = Associat
         fields = ("__all__")
+        extra_kwargs = {
+            'id_warehouse_from': {'required': False},
+            "id_warehouse_to": {'required': False},
+            'id_sale_point_from': {'required': False},
+            'id_sale_point_to' : {'required': False},
+        } 

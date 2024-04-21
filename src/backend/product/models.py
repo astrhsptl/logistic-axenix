@@ -52,6 +52,7 @@ class Deal(models.Model):
         editable=False
     )
     quantity = models.IntegerField(blank=False, null=False, verbose_name='Количество')
+    created_at = models.DateField(auto_now_add=True)
     id_sale_point = models.ForeignKey(to=SalePoint, null=True, on_delete=models.SET_NULL, related_name='deal')
     id_product = models.ForeignKey(to=Product, null=True, on_delete=models.SET_NULL, related_name='deal')
     

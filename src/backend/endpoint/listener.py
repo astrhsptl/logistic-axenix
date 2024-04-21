@@ -28,6 +28,7 @@ async def warehouse_update_less(sender, **kwargs):
             if serializer.is_valid():
                 return requests.post(env("URL_WEBSOCKET"), serializer.validated_data)
 
+
 @receiver(post_save, sender=Warehouse)
 async def warehouse_update(sender, **kwargs):
     all_products_for_warehouse = Product.objects.filter(id_warehouse=sender.id)
@@ -49,6 +50,7 @@ async def warehouse_update(sender, **kwargs):
             if serializer.is_valid():
                 return requests.post(env("URL_WEBSOCKET"), {serializer.validated_data, quantity_per_category})
 
+
 @receiver(post_save, sender=Warehouse)
 async def warehouse_update(sender, **kwargs):
     all_products_for_warehouse = Product.objects.filter(id_warehouse=sender.id)
@@ -60,6 +62,7 @@ async def warehouse_update(sender, **kwargs):
         serializer = NotificationModelSerializer(notification)
         if serializer.is_valid():
             return requests.post(env("URL_WEBSOCKET"), serializer.validated_data)
+
 
 @receiver(post_save, sender=SalePoint)
 async def sale_point_update(sender, **kwargs):
@@ -76,10 +79,13 @@ async def sale_point_update(sender, **kwargs):
             if serializer.is_valid():
                 return requests.post(env("URL_WEBSOCKET"), serializer.validated_data)
 
+
 @receiver(post_save, sender=SalePoint)
 async def sale_point_update(sender, **kwargs):
     all_products_for_sale_point = Product.objects.filter(id_warehouse=sender.id)
-    all_categories_for_sale_point = all_products_for_sale_point.id_category.distinct()
+    all_categories_for_sale_point = []
+    for category in all_products_for_sale_point:
+            all_categories_for_sale_point = category.id_product__name.distinct()
     quantity_per_category= {}
     for category in all_categories_for_sale_point:
         product_in_category = all_products_for_sale_point.filter(id_category=category)
@@ -96,6 +102,7 @@ async def sale_point_update(sender, **kwargs):
             serializer = NotificationModelSerializer(notification)
             if serializer.is_valid():
                 return requests.post(env("URL_WEBSOCKET"), {serializer.validated_data, quantity_per_category})
+
 
 @receiver(post_save, sender=Warehouse)
 async def sale_point_update(sender, **kwargs):
