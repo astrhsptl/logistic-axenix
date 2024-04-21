@@ -18,7 +18,7 @@ import { BaseModal } from '.';
 interface ProductCreateProps {}
 
 export const ProductCreateModal: React.FC<ProductCreateProps> = observer(() => {
-  const { productCreateStatement } = useStoreHook();
+  const { productCreateStatement, pointsStatement } = useStoreHook();
   const [ProductId, setProductId] = useState<string | undefined>(undefined);
   const [driverId, setDriverId] = useState<string | undefined>(undefined);
   const drivers = useQuery({
@@ -82,6 +82,10 @@ export const ProductCreateModal: React.FC<ProductCreateProps> = observer(() => {
               toast.error('Не выбран водитель');
               return;
             }
+
+            productCreateStatement.close();
+            pointsStatement.invalidate();
+            toast.success('Маршрут создан');
           }}
         >
           Утвердить
