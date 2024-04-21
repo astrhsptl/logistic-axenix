@@ -42,7 +42,7 @@ admin.site.register(Category, CategoryAdmin)
 
 class DealAdmin(admin.ModelAdmin):
     fields = (
-        "id", 'quantity', 'id_sale_point', 'id_product'
+        "id", 'quantity', 'id_sale_point', 'id_product', 'created_at'
     )
     list_display = (
         "id",
