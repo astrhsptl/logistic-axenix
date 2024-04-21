@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from typing import Optional
+
+from pydantic import BaseModel, Field
 
 
 class Response(BaseModel):
@@ -7,10 +9,10 @@ class Response(BaseModel):
 
 
 class NotificationPayload(BaseModel):
-    id: str | None
-    name: str | None
-    description: str | None
-    is_read: bool | None
-    created_at: str | None
-    id_warehouse: str | None
-    id_sale_point: str | None
+    id: Optional[str] = Field(default=None)
+    name: Optional[str] = Field(default=None)
+    description: Optional[str] = Field(default=None)
+    is_read: Optional[bool] = Field(default=None)
+    created_at: Optional[str] = Field(default=None)
+    id_warehouse: Optional[str] = Field(default=None)
+    id_sale_point: Optional[str] = Field(default=None)
