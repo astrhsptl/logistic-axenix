@@ -8,8 +8,7 @@ from rest_framework.response import Response
 
 from .models import BadProduct, BestProduct
 from .serializers import (
-    BadProductModelSerializer,
-    BestProductModelSerializer,
+    GategoryinWarehouseSeasonModelSerializer,
     YourRequestSerializerModelSerializer,
 )
 
@@ -28,9 +27,6 @@ season = {
         request=YourRequestSerializerModelSerializer,
     )
 class Season(GenericAPIView):
-    serializer_for_best = BestProductModelSerializer
-    serializer_for_bad = BadProductModelSerializer
-
     def post(self, request):
         season_id = request.data['season_id']
         all_deal_for_season = Deal.objects.filter(created_at__gte=season[season_id][0], created_at__lte=season[season_id][1])
@@ -50,3 +46,29 @@ class Season(GenericAPIView):
         best_product = BestProduct.objects.create(name = max(all_name_products_and_quantity_per_season))
         bad_product = BadProduct.objects.create(name = min(all_name_products_and_quantity_per_season))
         return Response({'best': best_product.name, 'bad': bad_product.name})
+
+@extend_schema(
+        tags=['CategoryWarehouseSeason'],
+        request=GategoryinWarehouseSeasonModelSerializer,
+    )
+class GategorySalePointSeasonAPI(GenericAPIView):
+    def post(self, request):
+        result = {}
+        season_id = request.data['season_id']
+        id_sale_point = request.data['id_sale_point']
+        all_deal_per_season = Deal.objects.filter(created_at__gte=season[season_id][0], created_at__lte=season[season_id][1])
+        all_deal_per_serson_for_sale_point = all_deal_per_season.filter(id_product__id_sale_point=id_sale_point)
+        print(all_deal_per_serson_for_sale_point)
+        all_quantity_per_season_sale_point = all_deal_per_serson_for_sale_point.aggregate(Sum("quantity"))
+        all_categories_per_season_for_sale_point = set()
+        for deal in all_deal_per_serson_for_sale_point:
+                all_categories_per_season_for_sale_point.add(deal.id_product.id_category.name)
+        quantity_per_category= {}
+        for category in list(all_categories_per_season_for_sale_point):
+            deal_product_in_category = all_deal_per_serson_for_sale_point.filter(id_product__id_category__name=category)
+            for quentity in deal_product_in_category:
+                if category in quantity_per_category.keys():
+                    quantity_per_category[category] += quentity.id_product.product_quantity
+                else:
+                    quantity_per_category[category] = quentity.id_product.product_quantity
+        return Response(quantity_per_category)
