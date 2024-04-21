@@ -40,12 +40,11 @@ class AssociatViewSet(ModelViewSet):
     queryset = Associat.objects.all()
     serializer_class = AssociatModelSerializer
     filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = ['id',
-                    'id_warehouse_from', 
-                    'id_warehouse_to', 
-                    'id_sale_point_from', 
-                    'id_sale_point_to', 
+    search_fields = ['id', 
                     'distance', 
                     'duration',]
-    filterset_fields = ['id', 'distance', 'duration']
+    filterset_fields = ['id', 'distance', 'duration', 'id_warehouse_from', 
+                    'id_warehouse_to', 
+                    'id_sale_point_from', 
+                    'id_sale_point_to']
 

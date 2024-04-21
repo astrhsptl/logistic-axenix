@@ -7,7 +7,6 @@ from .models import (
     RouteOrder,
 )
 
-
 class DriverAdmin(admin.ModelAdmin):
     fields = (
         "id", 'first_name', 'last_name', 'phone', 'experience', 'volume', 'user_id'
