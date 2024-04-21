@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'endpoint',
     'authsystem',
     'notifications',
+    'prediction'
 ]
 
 MIDDLEWARE = [

@@ -27,5 +27,6 @@ urlpatterns = [
             path('logistics/', include('logistics.urls'), name='logistics'),
             path('endpoint/', include('endpoint.urls'), name='endpoint'),
             path('auth/', include('authsystem.urls')),
+            path('predictions/', include('prediction.urls')),
             ]))
     ]
