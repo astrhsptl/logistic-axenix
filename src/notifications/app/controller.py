@@ -1,4 +1,5 @@
 from json import dumps
+from typing import Optional
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
@@ -10,8 +11,8 @@ websocket_collector = WebSocketCollector()
 
 
 @controller.post("/new/")
-async def new_notification(payload: NotificationPayload) -> None:
-	await websocket_collector.transfer(message=payload.model_dump_json())
+async def new_notification(payload: Optional[NotificationPayload]) -> None:
+	await websocket_collector.transfer(message=payload.model_dump_json(exclude_none=True, exclude_unset=True))
 
 
 @controller.websocket("/ws/")
