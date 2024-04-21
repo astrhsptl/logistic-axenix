@@ -1,0 +1,1 @@
+from .controller import controller  # noqa: F401
