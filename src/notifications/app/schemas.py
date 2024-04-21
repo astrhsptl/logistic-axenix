@@ -10,7 +10,7 @@ class NotificationPayload(BaseModel):
     id: str | None
     name: str | None
     description: str | None
-    is_read: bool
+    is_read: bool | None
     created_at: str | None
     id_warehouse: str | None
     id_sale_point: str | None
