@@ -1,5 +1,18 @@
 from uuid import uuid4
+
 from django.db import models
+
+# class (models.Model):
+#     id = models.UUIDField(
+#         primary_key=True,
+#         db_index=True,
+#         default=uuid4,
+#         editable=False
+#     )
+
+#     def __str__(self):
+#         return str()
+
 
 
 class BestProduct(models.Model):

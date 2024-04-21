@@ -142,8 +142,8 @@ load_dotenv()
 #             return requests.post(env("URL_WEBSOCKET"), data_for_notification)
 
 @receiver(post_save, sender=Product)
-def product(sender, **kwarg):
-    print('xyi')
+def product(sender, *args, **kwarg):
+    print(*args, **kwarg)
     return requests.post(env("URL_WEBSOCKET"), json={
   "id": "string",
   "name": "string",
