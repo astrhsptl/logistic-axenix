@@ -8,10 +8,11 @@ interface BaseModalProps {
   children: ReactNode;
   statement: ModalWindowStatement;
   className?: ClassValue;
+  onClick?(event: React.MouseEvent): void;
 }
 
 export const BaseModal: FC<BaseModalProps> = observer(
-  ({ children, statement, className }) => {
+  ({ children, statement, className, onClick }) => {
     const { isActive, switchState, open, close } = statement;
 
     return (
@@ -27,6 +28,9 @@ export const BaseModal: FC<BaseModalProps> = observer(
             className ? className : DefaultStyle.modalBackground,
             isActive ? DefaultStyle.active : '',
           )}
+          onClick={(e: React.MouseEvent) => {
+            onclick === undefined ? onClick(e) : '';
+          }}
         >
           {children}
         </div>

@@ -10,7 +10,8 @@ export const compileUrlPath = (
     url += '?';
   }
 
-  for (const [qn, qv] of Object.entries(queryParams)) url += `${qn}=${qv}`;
-
+  Object.entries(queryParams).forEach(([qn, qv]) => {
+    url += `${qn}=${qv}&`;
+  });
   return url;
 };

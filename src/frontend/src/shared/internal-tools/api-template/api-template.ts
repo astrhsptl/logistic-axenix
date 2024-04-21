@@ -13,15 +13,11 @@ export class APITemplate {
   async fetchAll<FetchType>(
     queryParams?: QueryParam,
     RequestConfig?: AxiosRequestConfig,
-  ): Promise<FetchType[] | null> {
+  ): Promise<FetchType> {
     const url = compileUrlPath(this.url, queryParams);
-    const data: AxiosResponse<FetchType[]> | null = await axios
+    const data: AxiosResponse<FetchType> = await axios
       .get(url, RequestConfig)
-      .catch(() => null);
-
-    if (!data) {
-      return null;
-    }
+      .catch(() => []);
 
     return data.data;
   }

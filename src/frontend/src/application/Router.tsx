@@ -7,6 +7,7 @@ import {
   NewRoute,
   NotFoundPage,
   RedirectNotFound,
+  SalePoint,
   SalePoints,
   SignIn,
   SignUp,
@@ -64,6 +65,11 @@ export const AppRouter = () => {
         key={'admin sale-point'}
         element={<SalePoints />}
         path='/admin/company/sale-point'
+      />
+      <Route
+        key={'admin sale-point'}
+        element={<SalePoint />}
+        path='/admin/company/sale-point/:id'
       />
     </Routes>
   );

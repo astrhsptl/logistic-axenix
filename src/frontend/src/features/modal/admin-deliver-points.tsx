@@ -9,7 +9,8 @@ interface AdminDeliverPointsProps {}
 
 export const AdminDeliverPoints: React.FC<AdminDeliverPointsProps> = observer(
   () => {
-    const { pointsChooseStatement, pointsStatement } = useStoreHook();
+    const { pointsChooseStatement, pointsStatement, productCreateStatement } =
+      useStoreHook();
 
     return (
       <BaseModal
@@ -70,6 +71,8 @@ export const AdminDeliverPoints: React.FC<AdminDeliverPointsProps> = observer(
                 toast.error('Нужно выбрать хотя бы 2 объекта!');
                 return;
               }
+
+              productCreateStatement.open();
             }}
           >
             Утвердить
