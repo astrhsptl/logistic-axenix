@@ -52,3 +52,28 @@ jobs:
       - name: Pushing backend image
         working-directory: ./src/backend
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}-backend:latest
+
+
+  notifications-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+    
+      - name: Preparing notifications image
+        working-directory: ./src/notifications
+        run: docker build -t ${{ github.event.repository.name }}-notifications -f ./Dockerfile .
+
+      - name: Tagging notifications image
+        working-directory: ./src/notifications
+        run: docker image tag ${{ github.event.repository.name }}-notifications ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}-notifications:latest
+
+      - name: Pushing notifications image
+        working-directory: ./src/notifications
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}-notifications:latest
+
