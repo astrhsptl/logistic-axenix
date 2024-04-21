@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'logistics',
     'endpoint',
     'authsystem',
-    'notifications',
     'prediction'
 ]
 

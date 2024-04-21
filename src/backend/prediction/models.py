@@ -1,19 +1,17 @@
 from uuid import uuid4
 
 from django.db import models
-
-# class (models.Model):
-#     id = models.UUIDField(
-#         primary_key=True,
-#         db_index=True,
-#         default=uuid4,
-#         editable=False
-#     )
-
-#     def __str__(self):
-#         return str()
+from endpoint.models import SalePoint
 
 
+class SalePointCategory(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        db_index=True,
+        default=uuid4,
+        editable=False
+    )
+    id_sale_point = models.ForeignKey(to=SalePoint, null=True, related_name='season', on_delete=models.SET_NULL)
 
 class BestProduct(models.Model):
     id = models.UUIDField(
