@@ -1,0 +1,33 @@
+@import './base.module.scss';
+
+.modalBackground {
+  display: none;
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100dvw;
+  height: 100dvh;
+
+  background-color: rgba(0,0,0,0.2);
+
+  &.active{
+      display: grid;
+
+      justify-content: center;
+      align-items: center;
+  }
+}
+
+.center {
+  @include font(14px, 600);
+  @include flexCenterColumn();
+  justify-content: center;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  border-radius: 10px;
+}

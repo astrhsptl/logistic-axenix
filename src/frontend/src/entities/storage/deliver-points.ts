@@ -40,6 +40,10 @@ export class DeliverPointsStatement {
     }
   }
 
+  invalidate() {
+    this.points = [];
+  }
+
   removePoint(position: number) {
     this.points = this.points.filter((point) => !(point.position === position));
   }

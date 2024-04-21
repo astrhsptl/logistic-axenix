@@ -1,3 +1,4 @@
+export * from './associatives';
 export * from './category';
 export * from './deal';
 export * from './driver';

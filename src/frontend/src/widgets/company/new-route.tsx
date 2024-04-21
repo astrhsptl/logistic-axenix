@@ -19,12 +19,12 @@ export const NewRouteMap: React.FC<NewRouteMapProps> = observer(() => {
   const { pointsStatement, pointsChooseStatement } = useStoreHook();
   const location = useGeoLocation();
   const salePointsQuery = useQuery({
-    queryKey: ['salepoint'],
-    queryFn: async () => await salePointAPI.fetchAll<SalePoint>(),
+    queryKey: ['salepoints'],
+    queryFn: async () => await salePointAPI.fetchAll<SalePoint[]>(),
   });
   const warehousesQuery = useQuery({
-    queryKey: ['warehouse'],
-    queryFn: async () => await warehouseAPI.fetchAll<WareHouse>(),
+    queryKey: ['warehouses'],
+    queryFn: async () => await warehouseAPI.fetchAll<WareHouse[]>(),
   });
 
   const addToStatement = (point: SalePoint | WareHouse) => {

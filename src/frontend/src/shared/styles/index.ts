@@ -7,6 +7,7 @@ import DriverStyles from './driver.module.scss';
 import HeaderStyles from './header.module.scss';
 import HomepageStyles from './homepage.module.scss';
 import NotFoundStyles from './not-found.module.scss';
+import SalePointStyles from './sale-point.module.scss';
 
 export {
   AuthStyles,
@@ -18,4 +19,5 @@ export {
   HeaderStyles,
   HomepageStyles,
   NotFoundStyles,
+  SalePointStyles,
 };

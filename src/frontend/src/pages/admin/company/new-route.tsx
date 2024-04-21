@@ -1,4 +1,5 @@
 import { AdminDeliverPoints, BaseAdminLayout } from '@/features';
+import { ProductCreateModal } from '@/features/modal/product-create-modal';
 import { BaseAdminStyles, CompanyLinks } from '@/shared';
 import { NewRouteMap } from '@/widgets';
 import React from 'react';
@@ -17,6 +18,7 @@ export const NewRoute: React.FC<NewRouteProps> = () => {
     >
       <NewRouteMap />
       <AdminDeliverPoints />
+      <ProductCreateModal />
     </BaseAdminLayout>
   );
 };

@@ -1,10 +1,22 @@
 import { BaseAdminLayout, DriverCard } from '@/features';
-import { BaseAdminStyles, CompanyLinks, DriverStyles } from '@/shared';
+import {
+  BaseAdminStyles,
+  CompanyLinks,
+  Driver,
+  DriverStyles,
+  driverAPI,
+} from '@/shared';
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 interface DriversProps {}
 
 export const Drivers: React.FC<DriversProps> = () => {
+  const { data } = useQuery({
+    queryKey: ['drivers'],
+    queryFn: async () => await driverAPI.fetchAll<Driver[]>(),
+  });
+
   return (
     <BaseAdminLayout
       className={BaseAdminStyles.adminEntrypoint}
@@ -16,86 +28,27 @@ export const Drivers: React.FC<DriversProps> = () => {
     >
       <section></section>
       <section className={DriverStyles.driverContainer}>
-        {[1, 2, 3, 4].map((a) => (
+        {data?.map((driver) => (
           <DriverCard
-            key={a}
-            driver={{
-              first_name: 'Vasya',
-              last_name: 'Pidorov',
-              id: 'Pidorov',
-              phone: 79604469320,
-              volume: 1000,
-            }}
+            key={driver.id}
+            driver={driver}
             point_from={{
-              address: 'Pidorkovo 19 s',
+              address: 'Склад 2',
               id: 'asdfasdg',
               lat: 99,
               lon: 112,
-              name: 'Shaitanovo',
+              name: 'Склад 2',
               volume: 12241234,
             }}
             point_to={{
-              address: 'Pidorkovo 19 s',
+              address: 'Клиент 1',
               id: 'asdfasdg',
               lat: 99,
               lon: 112,
-              name: 'Shaitanovo',
+              name: 'Клиент 1',
               volume: 12241234,
             }}
-            products={[
-              {
-                cost: 777,
-                expiration_date: Date.now().toString(),
-                id: 'asdfasdf',
-                id_category: 'asdf',
-                id_sale_point: 'asdf',
-                id_shipment: 'asdfgashg',
-                id_warehouse: ' asdfasgd',
-                name: 'someonekovo',
-                product_quantity: 1234,
-                volume: 123,
-                weight: 777,
-              },
-              {
-                cost: 777,
-                expiration_date: Date.now().toString(),
-                id: 'asdfasdf',
-                id_category: 'asdf',
-                id_sale_point: 'asdf',
-                id_shipment: 'asdfgashg',
-                id_warehouse: ' asdfasgd',
-                name: 'someonekovo',
-                product_quantity: 1234,
-                volume: 123,
-                weight: 777,
-              },
-              {
-                cost: 777,
-                expiration_date: Date.now().toString(),
-                id: 'asdfasdf',
-                id_category: 'asdf',
-                id_sale_point: 'asdf',
-                id_shipment: 'asdfgashg',
-                id_warehouse: ' asdfasgd',
-                name: 'someonekovo',
-                product_quantity: 1234,
-                volume: 123,
-                weight: 777,
-              },
-              {
-                cost: 777,
-                expiration_date: Date.now().toString(),
-                id: 'asdfasdf',
-                id_category: 'asdf',
-                id_sale_point: 'asdf',
-                id_shipment: 'asdfgashg',
-                id_warehouse: ' asdfasgd',
-                name: 'someonekovo',
-                product_quantity: 1234,
-                volume: 123,
-                weight: 777,
-              },
-            ]}
+            products={[]}
           />
         ))}
       </section>

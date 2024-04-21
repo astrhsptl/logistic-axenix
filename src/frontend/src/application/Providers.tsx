@@ -1,5 +1,6 @@
 import { RootStore } from '@/entities';
 import { RootStoreContext, ToastProvider } from '@/shared';
+import { WebsocketProvider } from '@/widgets/websocket-provider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
@@ -22,7 +23,9 @@ export const Providers: React.FC<ProvidersProps> = ({ children }) => {
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <RootStoreContext.Provider value={RootStore}>
-            <ToastProvider>{children}</ToastProvider>
+            <ToastProvider>
+              <WebsocketProvider>{children}</WebsocketProvider>
+            </ToastProvider>
           </RootStoreContext.Provider>
         </QueryClientProvider>
       </BrowserRouter>
